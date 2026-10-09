@@ -67,7 +67,13 @@ RF-11. El sistema no deja registrar resultados con marcadores negativos o en enc
 
 | Clases relacionadas | Tipo (asociación / agregación / composición / herencia) | Multiplicidad | Explicación |
 |---|---|---|---|
-| | | | |
+| Persona — Jugador, Entrenador, Arbitro | Herencia | — | Jugador, Entrenador y Arbitro son tipos de Persona: heredan identificación y nombre, y cada uno agrega sus propios atributos. |
+| Torneo — Encuentro | Composición | 1 a 0..* | Un torneo contiene sus encuentros. Un encuentro no existe fuera del torneo al que pertenece. |
+| Torneo — Equipo | Agregación | 1 a 0..* | Un torneo tiene equipos inscritos, pero el equipo existe por sí mismo aunque el torneo termine. |
+| Equipo — Jugador | Agregación | 1 a 1..* | Un equipo agrupa a sus jugadores. El jugador sigue existiendo si el equipo se disuelve. |
+| Equipo — Entrenador | Asociación | 1 a 1 | Cada equipo es dirigido por un entrenador. |
+| Encuentro — Equipo | Asociación | 1 a 2 | Cada encuentro enfrenta a dos equipos: el local y el visitante. |
+| Encuentro — Arbitro | Asociación | 0..* a 1 | Cada encuentro tiene un árbitro asignado, y un árbitro puede dirigir muchos encuentros. |
 
 ## 8.6 Herencia o abstracción
 
