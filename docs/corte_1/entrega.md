@@ -78,26 +78,33 @@ RF-11. El sistema no deja registrar resultados con marcadores negativos o en enc
 ## 8.6 Herencia o abstracción
 
 ```text
-<Superclase>
-├── <Subclase 1>
-└── <Subclase 2>
+Persona (abstracta)
+├── Jugador
+├── Entrenador
+└── Arbitro
 ```
 
 **Justificación:**
 
-<texto>
+En un torneo participan jugadores, entrenadores y árbitros. Todos comparten los mismos datos básicos (identificación y nombre), por lo que esos atributos se definen una sola vez en la superclase Persona y las subclases los heredan, evitando repetir código.
+
+Persona es abstracta porque en el sistema no existe una persona genérica: siempre es un jugador, un entrenador o un árbitro. Cada subclase se diferencia por sus atributos: Jugador agrega numeroCamiseta y posicion, Entrenador agrega aniosExperiencia y Arbitro agrega categoria.
+
+También se diferencian por comportamiento: Persona declara el método abstracto describirRol(), y cada subclase lo implementa de forma distinta. Esto permitirá usar polimorfismo en el Corte 2.
 
 ## 8.7 Interface
 
 ```java
-public interface <Nombre> {
-    // métodos
+public interface Cancelable {
+    void cancelar();
 }
 ```
 
 **Clases que la implementarán y por qué:**
 
-<texto>
+La implementará la clase Encuentro, porque un encuentro programado se puede cancelar (RF-06). Al llamar a cancelar(), el estado del encuentro cambia a CANCELADO y ya no se le puede registrar un resultado.
+
+Se modela como interface y no con herencia porque cancelar no es un tipo de encuentro, sino una acción que se le puede aplicar. Además, otras clases que no se parecen a Encuentro, como Torneo, también podrían implementarla más adelante.
 
 ## 8.8 Enumeración
 
