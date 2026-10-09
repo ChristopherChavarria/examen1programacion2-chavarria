@@ -38,14 +38,17 @@ Se eligió este caso porque el funcionamiento de un torneo es familiar y sus reg
 ## 8.3 Requerimientos funcionales
 
 ```text
-RF-01.
-RF-02.
-RF-03.
-RF-04.
-RF-05.
-RF-06.
-RF-07.
-RF-08.
+RF-01. El sistema permitirá registrar torneos indicando su nombre, disciplina y fechas.
+RF-02. El sistema permitirá registrar equipos con sus jugadores y su entrenador.
+RF-03. El sistema permitirá inscribir equipos en un torneo.
+RF-04. El sistema permitirá programar encuentros entre dos equipos de un torneo, asignándoles fecha y árbitro.
+RF-05. El sistema permitirá registrar el resultado de un encuentro.
+RF-06. El sistema permitirá cancelar un encuentro programado.
+RF-07. El sistema permitirá consultar los encuentros de un torneo.
+RF-08. El sistema permitirá consultar la tabla de posiciones de un torneo.
+RF-09. El sistema no deja que un jugador pertenezca a dos equipos del mismo torneo.
+RF-10. El sistema no deja programar un encuentro de un equipo contra si mismo.
+RF-11. El sistema no deja registrar resultados con marcadores negativos o en encuentros cancelados.
 ```
 
 ## 8.4 Identificación de clases
