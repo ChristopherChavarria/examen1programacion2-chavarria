@@ -15,19 +15,25 @@ URL del repositorio: https://github.com/ChristopherChavarria/examen1programacion
 
 **Problema que se desea resolver:**
 
-<texto>
+Las organizaciones que realizan torneos por lo general llevan el control de equipos, jugadores, encuentros y resultados en un papel o en hojas de lineas , esto lo que hace es un desorden y es mas facil cometer errores, como meter a un jugador en 2 equipos, hacer por ejemplo un equipo contra si mismo etc. Lo que se busca es como mantener esa informacion en un sistema y aplicar las reglas del torneo de manera automatica.
 
 **Quién utilizaría el sistema:**
 
-<texto>
+El personal que organiza el torneo para llevar cada cosa como debe de ser inscribir al torneo a las personas , crear los equipos , programar los encuentros
 
 **Principales operaciones:**
 
-- <operación>
+- Registrar torneos con su disciplina y fechas.
+- Registrar equipos con sus jugadores y su entrenador.
+- Inscribir equipos en un torneo.
+- Programar encuentros entre dos equipos y asignarles un árbitro.
+- Registrar el resultado de un encuentro.
+- Cancelar un encuentro.
+- Consultar los encuentros y la tabla de posiciones de un torneo.
 
 **Justificación de la elección del caso:**
 
-<texto>
+Se eligió este caso porque el funcionamiento de un torneo es familiar y sus reglas son fáciles de entender. Además, permite aplicar los temas del curso: herencia con una clase Persona de la que derivan Jugador, Entrenador y Arbitro; enumeraciones para el estado de los encuentros; y reglas de negocio claras para validar.
 
 ## 8.3 Requerimientos funcionales
 
