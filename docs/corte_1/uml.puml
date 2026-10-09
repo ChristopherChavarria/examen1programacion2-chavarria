@@ -1,0 +1,84 @@
+@startuml
+title Gestión de torneos - Diagrama de clases preliminar (Corte 1)
+
+skinparam classAttributeIconSize 0
+hide empty methods
+
+abstract class Persona {
+  - identificacion : String
+  - nombre : String
+  + getIdentificacion() : String
+  + getNombre() : String
+  + setNombre(nombre : String) : void
+  + {abstract} describirRol() : String
+}
+
+class Jugador {
+  - numeroCamiseta : int
+  - posicion : String
+  + describirRol() : String
+}
+
+class Entrenador {
+  - aniosExperiencia : int
+  + describirRol() : String
+}
+
+class Arbitro {
+  - categoria : String
+  + describirRol() : String
+}
+
+class Equipo {
+  - nombre : String
+  + agregarJugador(jugador : Jugador) : void
+}
+
+class Torneo {
+  - nombre : String
+  - fechaInicio : LocalDate
+  - fechaFin : LocalDate
+  + inscribirEquipo(equipo : Equipo) : void
+  + programarEncuentro(local : Equipo, visitante : Equipo, fecha : LocalDate, arbitro : Arbitro) : Encuentro
+}
+
+class Encuentro {
+  - fecha : LocalDate
+  - marcadorLocal : int
+  - marcadorVisitante : int
+  + cancelar() : void
+}
+
+interface Cancelable <<interface>> {
+  + cancelar() : void
+}
+
+enum EstadoEncuentro {
+  PROGRAMADO
+  JUGADO
+  CANCELADO
+}
+
+enum Disciplina {
+  FUTBOL
+  BALONCESTO
+  VOLEIBOL
+}
+
+Persona <|-- Jugador
+Persona <|-- Entrenador
+Persona <|-- Arbitro
+
+Cancelable <|.. Encuentro
+
+Torneo "1" *-- "0..*" Encuentro : contiene
+Torneo "1" o-- "0..*" Equipo : inscribe
+Equipo "1" o-- "1..*" Jugador : agrupa
+Equipo "1" --> "1" Entrenador : dirigido por
+Encuentro "1" --> "2" Equipo : local / visitante
+Encuentro "0..*" --> "1" Arbitro : dirigido por
+
+Encuentro --> EstadoEncuentro : estado
+Torneo --> Disciplina : disciplina
+
+@enduml

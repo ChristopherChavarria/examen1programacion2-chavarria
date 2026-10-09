@@ -134,7 +134,7 @@ public enum Disciplina {
 
 ## 8.9 UML preliminar
 
-Archivo: `docs/corte_1/uml.png` o `docs/corte_1/uml.pdf`
+Archivo: `docs/corte_1/uml.png` (fuente en PlantUML: `docs/corte_1/uml.puml`)
 
 ![UML preliminar](uml.png)
 
@@ -142,10 +142,19 @@ Archivo: `docs/corte_1/uml.png` o `docs/corte_1/uml.pdf`
 
 Clases creadas en `proyecto/src/main/java/cr/ac/proyecto/model`:
 
-- <Clase>
+- Persona (clase abstracta)
+- Jugador
+- Entrenador
+- Arbitro
+- Equipo
+- Encuentro
+- Torneo
+- Cancelable (interface)
+- EstadoEncuentro (enum)
+- Disciplina (enum)
 
 ## Distribución del trabajo
 
 | Integrante | Aportes principales |
 |---|---|
-| | |
+| Christopher Chavarria Solorzano | Trabajo individual: análisis del caso, documento del corte, diagrama UML y código del modelo. |
