@@ -5,10 +5,10 @@
 ## 8.1 Identificación
 
 ```text
-Caso seleccionado:
-Integrante 1:
-Integrante 2:
-URL del repositorio:
+Caso seleccionado: CASO 4. Gestion de torneo
+Integrante 1:Christopher Chavarria Solorzano
+Integrante 2: (trabajo individual)
+URL del repositorio: https://github.com/ChristopherChavarria/examen1programacion2-chavarria
 ```
 
 ## 8.2 Descripción del problema
