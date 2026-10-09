@@ -109,14 +109,28 @@ Se modela como interface y no con herencia porque cancelar no es un tipo de encu
 ## 8.8 Enumeración
 
 ```java
-public enum <Nombre> {
-    // valores
+public enum EstadoEncuentro {
+    PROGRAMADO,
+    JUGADO,
+    CANCELADO
 }
 ```
 
 **Uso dentro del sistema:**
 
-<texto>
+El atributo estado de la clase Encuentro es de tipo EstadoEncuentro. Todo encuentro nace en estado PROGRAMADO. Cuando se le registra un resultado pasa a JUGADO, y si se cancela pasa a CANCELADO.
+
+Se usa un enum porque el estado solo puede tomar esos tres valores, y así se evita guardar textos libres con errores. También sirve para validar reglas: solo se puede registrar resultado o cancelar un encuentro que esté PROGRAMADO.
+
+Además se usará un segundo enum, Disciplina, para el atributo disciplina de la clase Torneo:
+
+```java
+public enum Disciplina {
+    FUTBOL,
+    BALONCESTO,
+    VOLEIBOL
+}
+```
 
 ## 8.9 UML preliminar
 
