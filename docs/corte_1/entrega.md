@@ -55,7 +55,13 @@ RF-11. El sistema no deja registrar resultados con marcadores negativos o en enc
 
 | Clase | Responsabilidad | Atributos principales |
 |---|---|---|
-| | | |
+| Persona (abstracta) | Representar los datos comunes de toda persona que participa en un torneo | identificacion, nombre |
+| Jugador | Representar a un jugador que pertenece a un equipo | numeroCamiseta, posicion |
+| Entrenador | Representar a la persona que dirige un equipo | aniosExperiencia |
+| Arbitro | Representar a la persona que dirige un encuentro | categoria |
+| Equipo | Agrupar a los jugadores y al entrenador que compiten juntos | nombre, jugadores, entrenador |
+| Torneo | Representar una competencia y contener sus equipos inscritos y sus encuentros | nombre, disciplina, fechaInicio, fechaFin, equipos, encuentros |
+| Encuentro | Representar un partido entre dos equipos, con su árbitro y su resultado | equipoLocal, equipoVisitante, fecha, arbitro, marcadorLocal, marcadorVisitante, estado |
 
 ## 8.5 Relaciones entre clases
 
