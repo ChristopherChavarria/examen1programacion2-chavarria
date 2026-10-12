@@ -6,6 +6,12 @@ public abstract class Persona {
     private String nombre;
 
     public Persona(String identificacion, String nombre) {
+        if (identificacion == null || identificacion.isBlank()) {
+            throw new IllegalArgumentException("La identificación es obligatoria.");
+        }
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre es obligatorio.");
+        }
         this.identificacion = identificacion;
         this.nombre = nombre;
     }
