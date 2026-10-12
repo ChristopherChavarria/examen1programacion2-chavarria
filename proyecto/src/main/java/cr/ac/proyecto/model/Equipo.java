@@ -2,6 +2,7 @@ package cr.ac.proyecto.model;
 
 import cr.ac.proyecto.exception.JugadorDuplicadoException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Equipo {
@@ -39,7 +40,7 @@ public class Equipo {
     }
 
     public List<Jugador> getJugadores() {
-        return jugadores;
+        return Collections.unmodifiableList(jugadores);
     }
 
     public boolean tieneJugador(String identificacion) {

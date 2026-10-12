@@ -4,6 +4,7 @@ import cr.ac.proyecto.model.Equipo;
 import cr.ac.proyecto.model.Persona;
 import cr.ac.proyecto.model.Torneo;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class GestorTorneos {
     }
 
     public List<Persona> listarPersonas() {
-        return personas;
+        return Collections.unmodifiableList(personas);
     }
 
     // ---------- Equipos ----------
@@ -79,7 +80,7 @@ public class GestorTorneos {
     }
 
     public List<Torneo> listarTorneos() {
-        return torneos;
+        return Collections.unmodifiableList(torneos);
     }
 
     public boolean eliminarTorneo(String nombre) {

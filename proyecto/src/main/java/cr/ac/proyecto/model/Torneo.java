@@ -4,6 +4,7 @@ import cr.ac.proyecto.exception.EncuentroInvalidoException;
 import cr.ac.proyecto.exception.JugadorDuplicadoException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Torneo {
@@ -63,11 +64,11 @@ public class Torneo {
     }
 
     public List<Equipo> getEquipos() {
-        return equipos;
+        return Collections.unmodifiableList(equipos);
     }
 
     public List<Encuentro> getEncuentros() {
-        return encuentros;
+        return Collections.unmodifiableList(encuentros);
     }
 
     public void inscribirEquipo(Equipo equipo) throws JugadorDuplicadoException {
