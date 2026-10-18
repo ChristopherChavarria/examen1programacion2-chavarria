@@ -66,13 +66,16 @@
 }
 
 .boton-secundario {
-    -fx-background-color: #e4e9f0;
+    -fx-background-color: white;
+    -fx-border-color: #b8c4d2;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
     -fx-text-fill: #1f3a5f;
     -fx-cursor: hand;
 }
 
 .boton-secundario:hover {
-    -fx-background-color: #d0d8e2;
+    -fx-background-color: #eef2f7;
 }
 
 .exito {
