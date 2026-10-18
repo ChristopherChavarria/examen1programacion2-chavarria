@@ -31,7 +31,7 @@
 .boton-principal {
     -fx-background-color: #2f6db5;
     -fx-text-fill: white;
-    -fx-pref-width: 140px;
+    -fx-pref-width: 240px;
     -fx-cursor: hand;
 }
 

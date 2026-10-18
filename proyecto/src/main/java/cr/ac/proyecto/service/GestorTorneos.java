@@ -1,5 +1,6 @@
 package cr.ac.proyecto.service;
 
+import cr.ac.proyecto.model.Arbitro;
 import cr.ac.proyecto.model.Equipo;
 import cr.ac.proyecto.model.Persona;
 import cr.ac.proyecto.model.Torneo;
@@ -11,6 +12,17 @@ import java.util.Map;
 
 public class GestorTorneos {
 
+    
+    private static GestorTorneos instancia;
+
+    public static GestorTorneos getInstancia() {
+        if (instancia == null) {
+            instancia = new GestorTorneos();
+            DatosDePrueba.cargar(instancia);
+        }
+        return instancia;
+    }
+
     private List<Torneo> torneos;
     private List<Persona> personas;
     private Map<String, Equipo> equiposPorNombre;
@@ -21,7 +33,6 @@ public class GestorTorneos {
         this.equiposPorNombre = new HashMap<>();
     }
 
-    // ---------- Personas ----------
 
     public void registrarPersona(Persona persona) {
         if (buscarPersona(persona.getIdentificacion()) != null) {
@@ -44,7 +55,17 @@ public class GestorTorneos {
         return Collections.unmodifiableList(personas);
     }
 
-    // ---------- Equipos ----------
+    public List<Arbitro> listarArbitros() {
+        List<Arbitro> arbitros = new ArrayList<>();
+        for (Persona p : personas) {
+            if (p instanceof Arbitro) {
+                arbitros.add((Arbitro) p);
+            }
+        }
+        return arbitros;
+    }
+
+ 
 
     public void registrarEquipo(Equipo equipo) {
         if (equiposPorNombre.containsKey(equipo.getNombre())) {
@@ -61,7 +82,6 @@ public class GestorTorneos {
         return new ArrayList<>(equiposPorNombre.values());
     }
 
-    // ---------- Torneos ----------
 
     public void registrarTorneo(Torneo torneo) {
         if (buscarTorneo(torneo.getNombre()) != null) {
@@ -91,7 +111,6 @@ public class GestorTorneos {
         return torneos.remove(torneo);
     }
 
-    // ---------- Consultas ----------
 
     public List<Equipo> tablaDePosiciones(Torneo torneo) {
         List<Equipo> tabla = new ArrayList<>(torneo.getEquipos());

@@ -7,12 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * Punto de entrada de la aplicación JavaFX.
- *
- * Ofrece un mecanismo simple de navegación: todas las vistas comparten
- * la misma Scene y se cambia su raíz con {@link #cambiarVista(String)}.
- */
+
 public class App extends Application {
 
     private static Scene scene;
@@ -26,11 +21,7 @@ public class App extends Application {
         stage.show();
     }
 
-    /**
-     * Cambia la vista actual.
-     *
-     * @param fxml nombre del archivo FXML sin extensión (por ejemplo "registro")
-     */
+    
     public static void cambiarVista(String fxml) throws IOException {
         scene.setRoot(cargarFXML(fxml));
     }

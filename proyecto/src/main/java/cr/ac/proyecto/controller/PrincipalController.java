@@ -1,31 +1,39 @@
 package cr.ac.proyecto.controller;
 
 import cr.ac.proyecto.App;
+import cr.ac.proyecto.model.Torneo;
+import cr.ac.proyecto.service.GestorTorneos;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 /**
- * Controller de la pantalla principal.
- *
- * Es un punto de partida: cada pareja debe adaptarlo a su caso
- * y agregar los botones o menús que lleven a sus demás vistas.
+ * Controller de la pantalla principal: muestra un resumen de los datos
+ * y lleva a las demás vistas.
  */
 public class PrincipalController {
 
     @FXML
+    private Label lblResumen;
+
+    @FXML
     private Label lblEstado;
+
+    private final GestorTorneos gestor = GestorTorneos.getInstancia();
 
     @FXML
     private void initialize() {
-        lblEstado.setText("Proyecto base listo. Adapte esta pantalla a su caso.");
+        int encuentros = 0;
+        for (Torneo t : gestor.listarTorneos()) {
+            encuentros += t.getEncuentros().size();
+        }
+        lblResumen.setText(gestor.listarTorneos().size() + " torneos, "
+                + gestor.listarEquipos().size() + " equipos y "
+                + encuentros + " encuentros registrados");
+        lblEstado.setText("Seleccione una opción del menú.");
     }
 
-    /**
-     * Ejemplo de navegación. Cree registro.fxml y su Controller
-     * para que este botón funcione.
-     */
     @FXML
     private void irARegistro() {
         navegar("registro");
