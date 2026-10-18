@@ -8,10 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
-/**
- * Controller de la pantalla principal: muestra un resumen de los datos
- * y lleva a las demás vistas.
- */
 public class PrincipalController {
 
     @FXML

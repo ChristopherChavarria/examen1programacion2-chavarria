@@ -14,10 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
-/**
- * Controller del formulario para programar un encuentro.
- * Recoge los datos de la vista, los valida y delega en el modelo.
- */
+
 public class RegistroController {
 
     @FXML
@@ -46,7 +43,7 @@ public class RegistroController {
         cbArbitro.getItems().setAll(gestor.listarArbitros());
     }
 
-    /** Al elegir un torneo, se cargan solo los equipos inscritos en él. */
+  
     @FXML
     private void seleccionarTorneo() {
         Torneo torneo = cbTorneo.getValue();
@@ -89,7 +86,7 @@ public class RegistroController {
             return;
         }
 
-        // Las reglas del negocio las valida el modelo.
+     
         try {
             torneo.programarEncuentro(local, visitante, fecha, arbitro);
             lblMensaje.getStyleClass().setAll("exito");
