@@ -59,4 +59,9 @@ public class Equipo {
         }
         jugadores.add(jugador);
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

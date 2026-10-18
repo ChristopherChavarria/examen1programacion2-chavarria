@@ -47,3 +47,34 @@
 .error {
     -fx-text-fill: #b3261e;
 }
+
+/* ---------- Formularios y tablas ---------- */
+
+.formulario {
+    -fx-background-color: white;
+    -fx-padding: 24;
+    -fx-hgap: 12;
+    -fx-vgap: 14;
+    -fx-background-radius: 6;
+    -fx-border-color: #d6dde6;
+    -fx-border-radius: 6;
+}
+
+.etiqueta {
+    -fx-font-weight: bold;
+    -fx-text-fill: #33475b;
+}
+
+.boton-secundario {
+    -fx-background-color: #e4e9f0;
+    -fx-text-fill: #1f3a5f;
+    -fx-cursor: hand;
+}
+
+.boton-secundario:hover {
+    -fx-background-color: #d0d8e2;
+}
+
+.exito {
+    -fx-text-fill: #1e7b34;
+}

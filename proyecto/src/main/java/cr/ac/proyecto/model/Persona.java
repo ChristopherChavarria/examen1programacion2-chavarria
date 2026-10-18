@@ -29,4 +29,9 @@ public abstract class Persona {
     }
 
     public abstract String describirRol();
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

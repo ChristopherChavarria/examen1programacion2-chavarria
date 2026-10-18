@@ -95,6 +95,10 @@ public class Torneo {
         if (!equipos.contains(local) || !equipos.contains(visitante)) {
             throw new EncuentroInvalidoException("Los dos equipos deben estar inscritos en el torneo.");
         }
+        if (fecha != null && (fecha.isBefore(fechaInicio) || fecha.isAfter(fechaFin))) {
+            throw new EncuentroInvalidoException("La fecha del encuentro debe estar entre "
+                    + fechaInicio + " y " + fechaFin + ".");
+        }
         Encuentro encuentro = new Encuentro(local, visitante, fecha, arbitro);
         encuentros.add(encuentro);
         return encuentro;
@@ -120,5 +124,10 @@ public class Torneo {
             }
         }
         return puntos;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }
