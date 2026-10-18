@@ -1,0 +1,146 @@
+@startuml
+title Gestión de torneos - Diagrama de clases final (Corte 3)
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+hide empty methods
+
+package "model" {
+  abstract class Persona {
+    - identificacion : String
+    - nombre : String
+    + getIdentificacion() : String
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + {abstract} describirRol() : String
+    + toString() : String
+  }
+
+  class Jugador {
+    - numeroCamiseta : int
+    - posicion : String
+    + describirRol() : String
+  }
+
+  class Entrenador {
+    - aniosExperiencia : int
+    + describirRol() : String
+  }
+
+  class Arbitro {
+    - categoria : String
+    + describirRol() : String
+  }
+
+  class Equipo {
+    - nombre : String
+    + getJugadores() : List<Jugador>
+    + tieneJugador(identificacion : String) : boolean
+    + agregarJugador(jugador : Jugador) : void
+  }
+
+  class Torneo {
+    - nombre : String
+    - fechaInicio : LocalDate
+    - fechaFin : LocalDate
+    + inscribirEquipo(equipo : Equipo) : void
+    + programarEncuentro(local : Equipo, visitante : Equipo, fecha : LocalDate, arbitro : Arbitro) : Encuentro
+    + calcularPuntos(equipo : Equipo) : int
+  }
+
+  class Encuentro {
+    - fecha : LocalDate
+    - marcadorLocal : int
+    - marcadorVisitante : int
+    + registrarResultado(local : int, visitante : int) : void
+    + cancelar() : void
+  }
+
+  interface Cancelable <<interface>> {
+    + cancelar() : void
+  }
+
+  enum EstadoEncuentro {
+    PROGRAMADO
+    JUGADO
+    CANCELADO
+  }
+
+  enum Disciplina {
+    FUTBOL
+    BALONCESTO
+    VOLEIBOL
+  }
+}
+
+package "service" {
+  class GestorTorneos {
+    - {static} instancia : GestorTorneos
+    - torneos : List<Torneo>
+    - personas : List<Persona>
+    - equiposPorNombre : Map<String, Equipo>
+    + {static} getInstancia() : GestorTorneos
+    + registrarPersona(persona : Persona) : void
+    + buscarPersona(identificacion : String) : Persona
+    + listarArbitros() : List<Arbitro>
+    + registrarEquipo(equipo : Equipo) : void
+    + buscarEquipo(nombre : String) : Equipo
+    + registrarTorneo(torneo : Torneo) : void
+    + buscarTorneo(nombre : String) : Torneo
+    + eliminarTorneo(nombre : String) : boolean
+    + tablaDePosiciones(torneo : Torneo) : List<Equipo>
+  }
+
+  class DatosDePrueba {
+    + {static} cargar(gestor : GestorTorneos) : void
+  }
+}
+
+package "exception" {
+  class JugadorDuplicadoException
+  class EncuentroInvalidoException
+}
+
+package "controller" {
+  class PrincipalController
+  class RegistroController
+  class ConsultaController
+  class GestionController
+}
+
+class Exception
+Exception <|-- JugadorDuplicadoException
+Exception <|-- EncuentroInvalidoException
+
+Persona <|-- Jugador
+Persona <|-- Entrenador
+Persona <|-- Arbitro
+
+Cancelable <|.. Encuentro
+
+Torneo "1" *-- "0..*" Encuentro : contiene
+Torneo "1" o-- "0..*" Equipo : inscribe
+Equipo "1" o-- "1..*" Jugador : agrupa
+Equipo "1" --> "1" Entrenador : dirigido por
+Encuentro "1" --> "2" Equipo : local / visitante
+Encuentro "0..*" --> "1" Arbitro : dirigido por
+Encuentro --> EstadoEncuentro : estado
+Torneo --> Disciplina : disciplina
+
+GestorTorneos "1" o-- "0..*" Torneo
+GestorTorneos "1" o-- "0..*" Persona
+GestorTorneos "1" o-- "0..*" Equipo
+DatosDePrueba ..> GestorTorneos : carga
+
+Equipo ..> JugadorDuplicadoException : lanza
+Torneo ..> JugadorDuplicadoException : lanza
+Torneo ..> EncuentroInvalidoException : lanza
+Encuentro ..> EncuentroInvalidoException : lanza
+
+PrincipalController ..> GestorTorneos
+RegistroController ..> GestorTorneos
+ConsultaController ..> GestorTorneos
+GestionController ..> GestorTorneos
+GestionController ..> Cancelable : usa
+
+@enduml
